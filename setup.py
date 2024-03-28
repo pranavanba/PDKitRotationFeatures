@@ -8,7 +8,7 @@ setup(
     author_email='aryton.tediarjo@sagebase.org',
     packages=['PDKitRotationFeatures'],
     install_requires=["numpy",
-                      "pandas==1.0.3",
+                      "pandas",
                       "scipy",
                       "pdkit==1.2",
                       "scikit-learn",
