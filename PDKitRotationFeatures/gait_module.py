@@ -356,8 +356,8 @@ class GaitFeatures:
         rotation_dict = {}
         for crossing in zero_crossings:
             if (gyro_dataframe.shape[0] >= 2) & (start != crossing):
-                duration = gyro_dataframe["td"][crossing] - \
-                    gyro_dataframe["td"][start]
+                duration = gyro_dataframe["td"].iloc[crossing] - \
+                    gyro_dataframe["td"].iloc[start]
                 auc = np.abs(metrics.auc(
                     gyro_dataframe["td"][start: crossing + 1],
                     gyro_dataframe[axis][start: crossing + 1]))
