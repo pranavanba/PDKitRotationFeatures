@@ -237,7 +237,7 @@ class GaitFeatures:
         """
 
         # check if dataframe is valid
-        window_start = accel_dataframe.td[0]
+        window_start = accel_dataframe.td.iloc[0]
         window_end = accel_dataframe.td.iloc[-1]
         window_duration = window_end - window_start
         feature_dict = {}
