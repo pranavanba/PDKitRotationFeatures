@@ -276,8 +276,7 @@ class GaitFeatures:
                 avg_step_duration = np.NaN
                 sd_step_duration = np.NaN
 
-            if (steps >= 4) and \
-                    (avg_step_duration > 1/self.sensor_sampling_frequency):
+            if (steps >= 4) and (avg_step_duration > 1/self.sensor_sampling_frequency):
                 strides1 = strikes[0::2]
                 strides2 = strikes[1::2]
                 stride_durations1 = []
@@ -293,11 +292,7 @@ class GaitFeatures:
                 sd_stride_duration = np.mean((np.std(stride_durations1),
                                               np.std(stride_durations2)))
 
-                step_regularity, stride_regularity,\
-                    symmetry = gp.gait_regularity_symmetry(
-                        series,
-                        average_step_duration=avg_step_duration,
-                        average_stride_duration=avg_stride_duration)
+                step_regularity, stride_regularity,symmetry = gp.gait_regularity_symmetry(series, average_step_duration=avg_step_duration, average_stride_duration=avg_stride_duration)
             else:
                 avg_number_of_strides = np.NaN
                 avg_stride_duration = np.NaN
@@ -307,9 +302,7 @@ class GaitFeatures:
                 symmetry = np.NaN
 
             speed_of_gait = gp.speed_of_gait(series, wavelet_level=6)
-            energy_freeze_index, \
-                locomotor_freeze_index = self.get_freeze_index_features(
-                    series, self.sensor_sampling_frequency)
+            energy_freeze_index, locomotor_freeze_index = self.get_freeze_index_features(series, self.sensor_sampling_frequency)
             feature_dict["%s_energy_freeze_index" % axis] = energy_freeze_index
             feature_dict["%s_loco_freeze_index" %
                          axis] = locomotor_freeze_index
@@ -356,8 +349,7 @@ class GaitFeatures:
         rotation_dict = {}
         for crossing in zero_crossings:
             if (gyro_dataframe.shape[0] >= 2) & (start != crossing):
-                duration = gyro_dataframe["td"].iloc[crossing] - \
-                    gyro_dataframe["td"].iloc[start]
+                duration = gyro_dataframe["td"].iloc[crossing] - gyro_dataframe["td"].iloc[start]
                 auc = np.abs(metrics.auc(
                     gyro_dataframe["td"][start: crossing + 1],
                     gyro_dataframe[axis][start: crossing + 1]))
@@ -366,11 +358,7 @@ class GaitFeatures:
 
                 if aucXt > self.rotation_detection_aucXt_upper_limit:
                     num_rotation_window += 1
-                    rotation_dict["rotation_chunk_%s" % num_rotation_window] =\
-                        ({"omega": omega,
-                          "aucXt": aucXt,
-                          "duration": duration,
-                          "period": [start, crossing]})
+                    rotation_dict["rotation_chunk_%s" % num_rotation_window] = ({"omega": omega, "aucXt": aucXt, "duration": duration, "period": [start, crossing]})
                 start = crossing
         return rotation_dict
 
