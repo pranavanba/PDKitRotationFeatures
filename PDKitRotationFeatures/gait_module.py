@@ -159,7 +159,7 @@ class GaitFeatures:
         Returns a pd.Dataframe based on defined sampling frequency
         """
         new_freq = np.round(1 / self.sensor_sampling_frequency, decimals=6)
-        df_resampled = dataframe.resample(str(new_freq) + 's').mean()
+        df_resampled = dataframe.resample(str(new_freq) + 'S').mean()
         df_resampled = df_resampled.interpolate(method='linear')
         return df_resampled
 
