@@ -10,7 +10,7 @@ setup(
     install_requires=["numpy",
                       "pandas",
                       "scipy",
-                      "pdkit==1.2",
+                      "pdkit==1.4.4",
                       "scikit-learn",
                       "tsfresh",
                       "future",
