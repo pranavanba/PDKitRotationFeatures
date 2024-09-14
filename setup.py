@@ -7,7 +7,7 @@ setup(
     author='Aryton Tediarjo and Larsson Omberg',
     author_email='aryton.tediarjo@sagebase.org',
     packages=['PDKitRotationFeatures'],
-    install_requires=["numpy=1.20.0",
+    install_requires=["numpy==1.20.0",
                       "pandas==1.0.3",
                       "scipy==1.7.3",
                       "pdkit==1.2",
